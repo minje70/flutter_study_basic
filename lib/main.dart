@@ -62,10 +62,46 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 50,
                 child: const Center(child: Text('Button')),
               ),
-            )
+            ),
+            Container(
+              height: 8,
+            ),
+            Center(
+              child: Counter(),
+            ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class Counter extends StatefulWidget {
+  @override
+  State<Counter> createState() => _CounterState();
+}
+
+class _CounterState extends State<Counter> {
+  int _counter = 0;
+
+  void _increment() {
+    setState(() {
+      _counter++;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text('$_counter 번 눌림'),
+        SizedBox(width: 16),
+        ElevatedButton(
+          onPressed: _increment,
+          child: Icon(Icons.plus_one),
+        ),
+      ],
     );
   }
 }
