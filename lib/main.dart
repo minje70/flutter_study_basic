@@ -1,4 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_study_basic/shoppingList.dart';
+
+class Profile {
+  Profile({required this.name, required this.subtitle});
+  final name;
+  final subtitle;
+}
 
 void main() {
   runApp(const MyApp());
@@ -15,15 +22,19 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Rapid Flutter Study'),
+      home: MyHomePage(title: 'Rapid Flutter Study'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  MyHomePage({super.key, required this.title});
 
   final String title;
+  final List<Profile> profiles = [
+    Profile(name: 'mijeong', subtitle: '42seoul에서 사용한 이름입니다.'),
+    Profile(name: 'minjae', subtitle: '리얼 이름입니다.')
+  ];
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -69,6 +80,9 @@ class _MyHomePageState extends State<MyHomePage> {
             Center(
               child: Counter(),
             ),
+            Expanded(
+              child: ShoppingList(profiles: widget.profiles),
+            )
           ],
         ),
       ),
