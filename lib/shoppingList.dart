@@ -34,10 +34,10 @@ class ShoppingList extends StatefulWidget {
   final List<Profile> profiles;
 
   @override
-  State<ShoppingList> createState() => ShoppingListState();
+  State<ShoppingList> createState() => _ShoppingListState();
 }
 
-class ShoppingListState extends State<ShoppingList> {
+class _ShoppingListState extends State<ShoppingList> {
   List<Profile> checkedProfile = [];
 
   void onClickFunc(Profile profile) {

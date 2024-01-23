@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_study_basic/getTranslater.dart';
+import 'package:flutter_study_basic/getXTestPage.dart';
+import 'package:flutter_study_basic/heroList.dart';
 import 'package:flutter_study_basic/shoppingList.dart';
+import 'package:get/get.dart';
 
 class Profile {
   Profile({required this.name, required this.subtitle});
@@ -16,7 +20,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
+      translations: Message(),
       title: 'Flutter Study',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
@@ -80,9 +85,17 @@ class _MyHomePageState extends State<MyHomePage> {
             Center(
               child: Counter(),
             ),
-            Expanded(
-              child: ShoppingList(profiles: widget.profiles),
-            )
+            // Expanded(
+            //   child: ShoppingList(profiles: widget.profiles),
+            // ),
+            HeroList(),
+            SizedBox(
+              height: 32,
+            ),
+            ElevatedButton(
+              onPressed: () => Get.to(GetXTestPage()),
+              child: Text('Go to GetX'),
+            ),
           ],
         ),
       ),
